@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<odoo>
+	<record id="view_form_holiday_model" model="ir.ui.view">
+		<field name="name">Holiday Well Wishes</field>
+		<field name="model">holiday.model</field>
+		<field name="arch" type="xml">
+			<form>
+				<div class="oe_right">
+					<button type="object" string="Count"/>
+					<button type="object" string="Get All"/>
+				</div>
+                <group>
+					<group> <field name="holiday_name" /> </group>
+				</group>
+				<field name="customer_ids">
+					<tree>
+						<field name="name"/>
+						<field name="gender"/>
+                        <field name="email"/>
+                        <field name="city_ke"/>
+						<field name="county_id"/>
+					</tree>
+				</field>
+
+
+				<footer>
+						<button type="object" name="print_report" string="Send email" class="oe_highlight" attrs="{'invisible':[('holiday_name','=',False)]}"/>
+                        <button special="cancel" string="Cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<act_window id="holiday.action_holiday_wizard" name="Holiday Wizard" src_model="res.partner" res_model="holiday.model" view_mode="form" target="new" multi="True" />
+
+
+</odoo>

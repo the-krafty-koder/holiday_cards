@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="paperformat_euro_landscape" model="report.paperformat">
+        <field name="name">European A4 Landscape</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">23</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+    <report id="action_holiday_wizard_report"
+            string="Holiday Report"
+            model="holiday.model"
+            report_type="qweb-pdf"
+            name="holiday.report_holiday_template"
+            aperformat="paperformat_euro_landscape"
+    />
+    <template id="report_holiday_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+
+
+
+                    <t t-foreach="docs" t-as="o">
+                        <br></br><br></br>
+                        <div class="row">
+                            <div class="col-md-12 " style="text-align:center">
+                                <div class="backgroundimage" style="text-align:center">
+                                    <img src="/holiday/static/src/img/holz2.jpeg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <br></br><br></br><p style="text-align:center"><b>Happy <span t-esc="o.datas"/>!</b></p><br></br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <p style="text-align:center">Happy Holidays! Wishing you and your family a beautiful and prosperous <span t-esc="o.datas"/>!
+                                  We appreciate your patronage and look forward to a mutually beneficial
+                                    relationship for many holiday Seasons to come.
+                                </p><br></br><br></br>
+                                <h4 style="text-align:center;font-color:blue"><b>Furahia Likizo!</b></h4>
+                            </div>
+                        </div>
+                    </t>
+
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
